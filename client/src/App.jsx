@@ -1,5 +1,6 @@
 import {BrowserRouter, Routes, Route } from 'react-router-dom'
-import TicketingPage from './Ticketing/TicketingModule.jsx'
+import CreateTicketPage from './CreateTicketPage/CreateTicket.jsx'
+import DashboardPage from './DashboardPage/Dashboard.jsx'
 import './App.css';
 
 
@@ -9,7 +10,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<TicketingPage/>}/>
+          <Route path='/' element={<DashboardPage/>}/>
+          <Route path='/CreateTicketPage' element={<CreateTicketPage/>}/>
         </Routes>
       </BrowserRouter>
     </>

@@ -11,11 +11,23 @@ module.exports = {
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
+  
   rules: {
+    indent: ["error", 2],
+    quotes: ["error", "single"],
+    semi: ["error", "always"],
     'react/jsx-no-target-blank': 'off',
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
     ],
   },
+
+  overrides: [
+    {
+      files: ['.js', '.jsx'],
+      rules: {
+        'indent': ["error", 4], 
+      },
+    }]
 }

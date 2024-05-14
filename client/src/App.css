@@ -1,23 +1,24 @@
 * {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-	font-family: var(--poppins);
-  }
-  
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--poppins);
+}
+
 :root {
-/*Color Global CSS Formats*/
---primary: #D0D0D0;
---secondary: #615B41;
---tertiary: #FFFFFF;
-  
-/*Text Global CSS Formats*/
---poppins: "Poppins", sans-serif;
---semibold: 700;
---medium: 500;
-  
-/*Input CSS Formats*/
---input-background: #ECECEC;
---input-stroke: #D3D3D3;
---stress: #525252
+  /*Color Global CSS Formats*/
+  --primary-color: #79ac78;
+  --secondary: #615b41;
+  --tertiary: #ffffff;
+  --light-green: #9fc088;
+
+  /*Text Global CSS Formats*/
+  --poppins: "Poppins", sans-serif;
+  --semibold: 700;
+  --medium: 500;
+
+  /*Input CSS Formats*/
+  --input-background: #ececec;
+  --input-stroke: #d3d3d3;
+  --stress: #525252;
 }

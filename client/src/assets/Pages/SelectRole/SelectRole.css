@@ -1,0 +1,39 @@
+.content-container {
+  padding: 0;
+  margin: 0;
+  width: 167vh;
+  min-height: 90vh;
+  height: auto;
+}
+.content-container h1 {
+  font-size: 38px;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+.content-container .role-box-container {
+  background-color: white;
+  border: 2px solid var(--input-stroke);
+  border-radius: 20px;
+  padding: 10px 10px;
+  width: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content-container .role-box {
+  background-color: var(--light-green);
+  border-radius: 20px;
+  margin: 10px 20px;
+  padding: 150px 150px;
+  display: flex;
+  justify-content: center;
+  width: max-content;
+  color: white;
+}
+.content-container .role-box h1 {
+  color: white;
+}
+
+.role-box i {
+  font-size: 50px;
+}

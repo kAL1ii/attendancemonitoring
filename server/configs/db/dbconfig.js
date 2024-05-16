@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
 
-const database = new Sequelize('dbticketsys', 'root', 'password', { 
+const database = new Sequelize('dbaccmonitoring', 'root', 'password', { 
   host: 'localhost',
   dialect: 'mysql'
 });

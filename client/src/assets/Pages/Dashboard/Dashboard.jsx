@@ -1,6 +1,6 @@
-import './Dashboard.css';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import "./Dashboard.css";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const [activeMenuItem, setActiveMenuItem] = useState(0);
@@ -11,8 +11,8 @@ const Dashboard = () => {
 
   const handleToggleSidebar = () => {
     // Toggle sidebar
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('hide');
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("hide");
   };
 
   return (
@@ -27,20 +27,20 @@ const Dashboard = () => {
           </a>
         </Link>
         <ul className="side-menu top">
-          <li className="side-menu-title">Ticketing System</li>
-          <Link to="/select-role">
-            <li className={activeMenuItem === 1 ? 'active' : ''}>
+          <li className="side-menu-title">Account Monitoring System</li>
+          <Link to="/acc-monitoring">
+            <li className={activeMenuItem === 1 ? "active" : ""}>
               <a href="#" onClick={() => handleMenuItemClick(0)}>
                 <i className="bx bxs-plus-square"></i>
-                <span className="text">Generate Ticket</span>
+                <span className="text">Account Monitoring</span>
               </a>
             </li>
           </Link>
-          <Link to="/view-tickets">
-            <li className={activeMenuItem === 1 ? 'active' : ''}>
+          <Link to="/acc-session">
+            <li className={activeMenuItem === 1 ? "active" : ""}>
               <a href="#" onClick={() => handleMenuItemClick(0)}>
                 <i className="bx bxs-objects-vertical-bottom"></i>
-                <span className="text">Ticket List</span>
+                <span className="text">Account Sessions List</span>
               </a>
             </li>
           </Link>
@@ -70,21 +70,10 @@ const Dashboard = () => {
 
         {/* MAIN */}
         <main>
-          <div className="home_welcome">
-            <div className="WT1">
-              Welcome to the Ticketing Module
-              <br />
+          <div className="content-container">
+            <div className="Empty-Text">
+              <p>Content is Empty</p>
             </div>
-            <div className="WT2">Cusina De Mariquina</div>
-          </div>
-          <div className="home_showtickets">
-            <div className="home_text">Tickets</div>
-            <div className="home_ticketbtndiv">
-              <a href="create_ticket" className="home_ticketbtn">
-                Create Ticket
-              </a>
-            </div>
-            <div className="home_ticketlistprev"></div>
           </div>
         </main>
       </section>

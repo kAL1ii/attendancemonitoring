@@ -104,7 +104,6 @@ body {
 #sidebar .side-menu-title {
   font-size: 16px;
   color: #aaaaaa;
-  transition-delay: 0.1s;
 }
 #sidebar .side-menu.top li a:hover {
   color: var(--primary-color);
@@ -236,62 +235,19 @@ body {
 /* NAVBAR */
 
 /* MAIN */
-#content main {
-  position: relative;
-  margin-left: 2%;
-  width: 96%;
-  margin-top: 30px;
+.content-container {
+  padding: 0;
+  margin: 0;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
 }
-.home_welcome {
-  padding: 10px;
-  height: 250px;
-  width: 100%;
-  border-radius: 20px;
-  background-color: #9fc088;
-}
-.WT1 {
-  font-size: 20px;
-  padding-top: 30px;
-  margin-left: 20px;
-  color: #ffffff;
-}
-.WT2 {
-  padding-top: 0;
-  font-size: 50px;
-  font-weight: 500;
-  color: #ffffff;
-  margin-left: 20px;
-}
-.home_showtickets {
-  position: relative;
-  background-color: #ffffff;
-  width: 100%;
-  border-radius: 20px;
-  margin-top: 30px;
-  height: 300px;
-}
-.home_text {
-  font-family: var(--poppins);
-  padding: 25px;
-  font-size: 25px;
-  font-weight: 500;
-  margin-left: 20px;
-  margin-top: 10px;
-}
-.home_ticketbtn {
-  margin-top: 10px;
-  color: #9fc088;
-  font-weight: 500;
-  position: absolute;
-  top: 10px;
-  right: 20px;
-}
-.home_ticketbtndiv .home_ticketbtn {
-  background-color: rgba(121, 172, 120, 0.409);
-  border-radius: 10px;
-  padding: 10px 25px 10px 25px;
-  border: none;
-  color: #477546;
+
+.content-container .Empty-Text {
+  color:#aaaaaa;
 }
 /* MAIN */
 /* CONTENT */

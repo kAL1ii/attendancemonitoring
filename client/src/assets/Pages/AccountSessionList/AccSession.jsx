@@ -1,8 +1,8 @@
-import './ParentForm.css';
-import { useState } from 'react';
+import './AccSession.css';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
-const ParentForm = () => {
+const AccountSessions = () => {
   const [activeMenuItem, setActiveMenuItem] = useState(0);
 
   const handleMenuItemClick = (index) => {
@@ -14,6 +14,7 @@ const ParentForm = () => {
     const sidebar = document.getElementById('sidebar');
     sidebar.classList.toggle('hide');
   };
+
   return (
     <>
       {/* CONTENT */}
@@ -26,29 +27,28 @@ const ParentForm = () => {
           </a>
         </Link>
         <ul className="side-menu top">
-          <li className="side-menu-title">Ticketing System</li>
-          <Link to="/select-role">
-            <li className={activeMenuItem === 0 ? 'active' : ''}>
+          <li className="side-menu-title">Account Monitoring System</li>
+          <Link to="/acc-monitoring">
+            <li className={activeMenuItem === 1 ? 'active' : ''}>
               <a href="#" onClick={() => handleMenuItemClick(0)}>
                 <i className="bx bxs-plus-square"></i>
-                <span className="text">Generate Ticket</span>
+                <span className="text">Account Monitoring</span>
               </a>
             </li>
           </Link>
-          <Link to="/view-tickets">
-            <li className={activeMenuItem === 1 ? 'active' : ''}>
+          <Link to="/acc-session">
+            <li className={activeMenuItem === 0 ? 'active' : ''}>
               <a href="#" onClick={() => handleMenuItemClick(0)}>
                 <i className="bx bxs-objects-vertical-bottom"></i>
-                <span className="text">Ticket List</span>
+                <span className="text">Account Sessions List</span>
               </a>
             </li>
           </Link>
         </ul>
       </section>
       {/* SIDEBAR */}
-
+      {/* NAVBAR */}
       <section id="content">
-        {/* NAVBAR */}
         <nav>
           <i className="bx bx-menu" onClick={handleToggleSidebar}></i>
           <form action="#">
@@ -66,18 +66,17 @@ const ParentForm = () => {
           </a>
         </nav>
         {/* NAVBAR */}
-
         {/* MAIN */}
         <main>
           <div className="content-container">
-            <h1>Hi</h1>
+            
           </div>
         </main>
+        {/* MAIN */}
       </section>
-      {/* MAIN */}
       {/* CONTENT */}
     </>
   );
 };
 
-export default ParentForm;
+export default AccountSessions;

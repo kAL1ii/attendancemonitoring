@@ -1,9 +1,11 @@
-import './Dashboard.css';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import "./qrscanner.css";
+import { Html5QrcodeScanner } from "html5-qrcode";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-const Dashboard = () => {
+const QRScanner = () => {
   const [activeMenuItem, setActiveMenuItem] = useState(0);
+  const [scanResult, setScanResult] = useState(null);
 
   const handleMenuItemClick = (index) => {
     setActiveMenuItem(index); // Set active menu item index
@@ -11,9 +13,27 @@ const Dashboard = () => {
 
   const handleToggleSidebar = () => {
     // Toggle sidebar
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('hide');
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("hide");
   };
+  useEffect(() => {
+    const scanner = new Html5QrcodeScanner("reader", {
+      qrbox: {
+        width: 450,
+        height: 450,
+      },
+      fps: 10,
+    });
+
+    scanner.render(success, error);
+    function success(result) {
+      scanner.clear();
+      setScanResult(result);
+    }
+    function error(err) {
+      console.warn(err);
+    }
+  }, []);
 
   return (
     <>
@@ -27,9 +47,9 @@ const Dashboard = () => {
           </a>
         </Link>
         <ul className="side-menu top">
-          <li className="side-menu-title">Attendance Monitoring </li>
+          <li className="side-menu-title">Attendance Monitoring</li>
           <Link to="/dashboard">
-            <li className={activeMenuItem === 0 ? "active" : ""}>
+            <li className={activeMenuItem === 1 ? "active" : ""}>
               <a href="#" onClick={() => handleMenuItemClick(0)}>
                 <i className="bx bxs-dashboard"></i>
                 <span className="text">Dashboard</span>
@@ -53,7 +73,7 @@ const Dashboard = () => {
             </li>
           </Link>
           <Link to="/qrscanner">
-            <li className={activeMenuItem === 1 ? "active" : ""}>
+            <li className={activeMenuItem === 0 ? "active" : ""}>
               <a href="#" onClick={() => handleMenuItemClick(0)}>
                 <i className="bx bx-qr-scan"></i>
                 <span className="text">QR Scanner</span>
@@ -63,7 +83,6 @@ const Dashboard = () => {
         </ul>
       </section>
       {/* SIDEBAR */}
-
       <section id="content">
         {/* NAVBAR */}
         <nav>
@@ -73,8 +92,18 @@ const Dashboard = () => {
         {/* MAIN */}
         <main>
           <div className="content-container">
-            <div className="Dashboard-container">
-              <p>This is Dashboard</p>
+            <div className="qrreader-container">
+            <h1 className="qr-box-title">SCAN QR CODE</h1>
+              <div className="qr-box" id="reader">
+                {scanResult ? (
+                  <div>
+                    Success: <p>{scanResult}</p>
+                  </div>
+                ) : (
+                  <div id="reader"></div>
+                )}
+              </div>
+              <div className="qrreader-pop-up"></div>
             </div>
           </div>
         </main>
@@ -85,4 +114,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default QRScanner;

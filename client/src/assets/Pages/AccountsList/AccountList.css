@@ -1,0 +1,59 @@
+.selection-filter {
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px 0 0 10px;
+}
+
+.selection-filter .filter-account-table-type {
+  padding: 5px;
+  border-radius: 5px;
+}
+.selection-filter button {
+  float: right;
+  padding: 8px 12px;
+  margin-right: 25px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.account-list-table {
+  width: 98%;
+  border-collapse: collapse;
+  font-size: 18px;
+  text-align: left;
+  margin: 0px 10px;
+  border: 1px solid #ddd;
+}
+.account-list-table th {
+  color: whitesmoke;
+}
+.account-list-table th, td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  background-color: rgb(243, 241, 241);
+  text-align: center;
+}
+
+.account-list-table th {
+  background-color: #96805a;
+}
+
+.account-list-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.account-list-table button {
+  padding: 8px 12px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.account-list-table button:hover {
+  background-color: #0056b3;
+}

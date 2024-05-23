@@ -1,8 +1,8 @@
-import './Dashboard.css';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import "./Home.css";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const Dashboard = () => {
+const Home = () => {
   const [activeMenuItem, setActiveMenuItem] = useState(0);
 
   const handleMenuItemClick = (index) => {
@@ -11,8 +11,8 @@ const Dashboard = () => {
 
   const handleToggleSidebar = () => {
     // Toggle sidebar
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('hide');
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("hide");
   };
 
   return (
@@ -27,9 +27,9 @@ const Dashboard = () => {
           </a>
         </Link>
         <ul className="side-menu top">
-          <li className="side-menu-title">Attendance Monitoring </li>
+          <li className="side-menu-title">Attendance Monitoring</li>
           <Link to="/dashboard">
-            <li className={activeMenuItem === 0 ? "active" : ""}>
+            <li className={activeMenuItem === 1 ? "active" : ""}>
               <a href="#" onClick={() => handleMenuItemClick(0)}>
                 <i className="bx bxs-dashboard"></i>
                 <span className="text">Dashboard</span>
@@ -63,18 +63,25 @@ const Dashboard = () => {
         </ul>
       </section>
       {/* SIDEBAR */}
-
       <section id="content">
         {/* NAVBAR */}
         <nav>
           <i className="bx bx-menu" onClick={handleToggleSidebar}></i>
+          <form action="#">
+            <div className="form-input">
+              <input type="search" placeholder="Search..." />
+              <button type="submit" className="search-btn">
+                <i className="bx bx-search"></i>
+              </button>
+            </div>
+          </form>
         </nav>
         {/* NAVBAR */}
         {/* MAIN */}
         <main>
           <div className="content-container">
-            <div className="Dashboard-container">
-              <p>This is Dashboard</p>
+            <div className="Empty-text">
+              <p>Content is Empty</p>
             </div>
           </div>
         </main>
@@ -85,4 +92,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Home;

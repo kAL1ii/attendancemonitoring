@@ -1,4 +1,6 @@
 import express from 'express';
+import database from './configs/db/dbconfig.js';
+import router from './routes/accountRoutes.js';
 import cors from 'cors';
 
 const PORT = 5000;
@@ -14,8 +16,9 @@ catch(error){
 
 app.use(cors());
 app.use(express.json())
+app.use('/accounts', router);
 
-app.get('/api/v1', (req, res) => {
-    res.writeHead('Hello Wolrd, coming from backend '+ PORT);
-    res.end();
-});
+
+app.listen(PORT, () => {
+    console.log("Server is running on port: " + PORT);
+})

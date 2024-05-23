@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Dashboard from './assets/Pages/Dashboard/Dashboard.jsx';
-import AccountSessions from './assets/Pages/AccountSessionList/AccSession.jsx';
-import AccountMonitoring from './assets/Pages/AccountMonitoring/AccMonitoring.jsx';
+import HomePage from './assets/Pages/Home/Home.jsx';
+import DashboardPage from './assets/Pages/Dashboard/Dashboard.jsx';
+import AccountListPage from './assets/Pages/AccountsList/AccountList.jsx';
+import AttendanceListPage from './assets/Pages/AttendanceList/AttendanceList.jsx';
+import QRScannerPage from './assets/Pages/QRScanner/qrscanner.jsx';
 import './App.css';
 
 function App() {
@@ -9,9 +11,11 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/acc-monitoring" element={<AccountMonitoring />} />
-          <Route path="/acc-session" element={<AccountSessions />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/acc-list" element={<AccountListPage />} />
+          <Route path="/att-list" element={<AttendanceListPage />} />
+          <Route path="qrscanner" element={<QRScannerPage/>}/>
         </Routes>
       </BrowserRouter>
     </>

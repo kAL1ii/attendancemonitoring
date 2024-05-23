@@ -1,0 +1,36 @@
+.qrreader-container {
+    display:flex;
+    margin: 100px;
+    height:auto;
+    flex-direction: column;
+    align-items: center;
+}
+.qr-box-title {
+    font-size: 74px;
+    font-weight: 300;
+}
+.qr-box {
+    align-items: center;
+    width: 48vh;
+    height: 48vh;
+}
+
+#reader__dashboard_section_csr button {
+    text-decoration: none !important;
+    border-radius: 2px;
+    margin-top: 1rem;
+    color: #fff;
+    background-color: #ee0a24;
+    border: 1px solid #ee0a24;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    height: 2.5rem;
+    width: 88% !important;
+    line-height: 2.5rem;
+    text-align: center;
+    cursor: pointer;
+    align-items: center;
+    -webkit-appearance: none;
+    -webkit-box-pack: center;
+}

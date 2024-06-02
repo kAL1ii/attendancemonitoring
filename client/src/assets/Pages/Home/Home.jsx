@@ -29,18 +29,10 @@ const Home = () => {
         <ul className="side-menu top">
           <li className="side-menu-title">Attendance Monitoring</li>
           <Link to="/dashboard">
-            <li className={activeMenuItem === 1 ? "active" : ""}>
+            <li className={activeMenuItem === 0 ? "active" : ""}>
               <a href="#" onClick={() => handleMenuItemClick(0)}>
                 <i className="bx bxs-dashboard"></i>
                 <span className="text">Dashboard</span>
-              </a>
-            </li>
-          </Link>
-          <Link to="/acc-list">
-            <li className={activeMenuItem === 1 ? "active" : ""}>
-              <a href="#" onClick={() => handleMenuItemClick(0)}>
-                <i className="bx bxs-user-account"></i>
-                <span className="text">Account List</span>
               </a>
             </li>
           </Link>
@@ -52,14 +44,6 @@ const Home = () => {
               </a>
             </li>
           </Link>
-          <Link to="/qrscanner">
-            <li className={activeMenuItem === 1 ? "active" : ""}>
-              <a href="#" onClick={() => handleMenuItemClick(0)}>
-                <i className="bx bx-qr-scan"></i>
-                <span className="text">QR Scanner</span>
-              </a>
-            </li>
-          </Link>
         </ul>
       </section>
       {/* SIDEBAR */}
@@ -67,14 +51,6 @@ const Home = () => {
         {/* NAVBAR */}
         <nav>
           <i className="bx bx-menu" onClick={handleToggleSidebar}></i>
-          <form action="#">
-            <div className="form-input">
-              <input type="search" placeholder="Search..." />
-              <button type="submit" className="search-btn">
-                <i className="bx bx-search"></i>
-              </button>
-            </div>
-          </form>
         </nav>
         {/* NAVBAR */}
         {/* MAIN */}

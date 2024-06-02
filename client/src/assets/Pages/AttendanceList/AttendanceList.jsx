@@ -1,26 +1,51 @@
 import "./AttendanceList.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-const AttendanceList = () => {
+const AccountList = () => {
   const [activeMenuItem, setActiveMenuItem] = useState(0);
+  const [filterOption, setFilterOption] = useState("Student");
+  const [studentAcc, setstudentAccounts] = useState([]);
+  const [relativeAccounts, setrelativeAccounts] = useState([]);
+  const [guestAccounts, setguestAccounts] = useState([]);
 
   const handleMenuItemClick = (index) => {
     setActiveMenuItem(index); // Set active menu item index
   };
-
   const handleToggleSidebar = () => {
     // Toggle sidebar
     const sidebar = document.getElementById("sidebar");
     sidebar.classList.toggle("hide");
   };
 
+  const handleFilterChange = (e) => {
+    setFilterOption(e.target.value);
+  };
+
+  const fetchAccounts = async () => {
+    try {
+      const fetchresponse = await axios.get("http://localhost:5000/accounts");
+      setstudentAccounts(fetchresponse.data.studentModel);
+      setrelativeAccounts(fetchresponse.data.relativeModel);
+      setguestAccounts(fetchresponse.data.guestModel);
+    } catch (error) {
+      // ignore error
+    }
+  };
+
+  useEffect(() => {
+    fetchAccounts();
+    const interval = setInterval(fetchAccounts, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       {/* CONTENT */}
       {/* SIDEBAR */}
       <section id="sidebar">
-        <Link to="/dashboard">
+        <Link to="/att-list">
           <a href="#" className="brand">
             <i className="bx bxl-venmo"></i>
             <span className="text">Versatily</span>
@@ -36,27 +61,11 @@ const AttendanceList = () => {
               </a>
             </li>
           </Link>
-          <Link to="/acc-list">
-            <li className={activeMenuItem === 1 ? "active" : ""}>
-              <a href="#" onClick={() => handleMenuItemClick(0)}>
-                <i className="bx bxs-user-account"></i>
-                <span className="text">Account List</span>
-              </a>
-            </li>
-          </Link>
           <Link to="/att-list">
             <li className={activeMenuItem === 0 ? "active" : ""}>
               <a href="#" onClick={() => handleMenuItemClick(0)}>
                 <i className="bx bx-list-check"></i>
                 <span className="text">Attendance List</span>
-              </a>
-            </li>
-          </Link>
-          <Link to="/qrscanner">
-            <li className={activeMenuItem === 1 ? "active" : ""}>
-              <a href="#" onClick={() => handleMenuItemClick(0)}>
-                <i className="bx bx-qr-scan"></i>
-                <span className="text">QR Scanner</span>
               </a>
             </li>
           </Link>
@@ -78,16 +87,102 @@ const AttendanceList = () => {
         </nav>
         {/* NAVBAR */}
         {/* MAIN */}
-        <div className="content-container">
+        <main>
+          <div className="content-container">
             <div className="account-container">
-              {/* TO DO: WHEN QR SCANNED IT FETCHES THE DATA AND AUTOMATICALLY ADDS IT IN THIS TABLE */}
+              <h1>Attendance</h1>
+              <div className="selection-filter">
+                <label>Change Table: </label>
+                <select
+                  className="filter-account-table-type"
+                  value={filterOption}
+                  onChange={handleFilterChange}
+                >
+                  <option value="Student">Student</option>
+                  <option value="Relative">Invite</option>
+                  <option value="Guest">Guest</option>
+                </select>
+              </div>
+              {filterOption === "Student" && (
+                <table className="account-list-table">
+                  <thead>
+                    <tr>
+                      <th>Student ID</th>
+                      <th>Full Name</th>
+                      <th>Email</th>
+                      <th>Student Number</th>
+                      <th>Section</th>
+                      <th>Type</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {studentAcc.map((studentAccs, index) => (
+                      <tr key={index}>
+                        <td>{studentAccs.studentID}</td>
+                        <td>{studentAccs.student_fullName}</td>
+                        <td>{studentAccs.studentEmail}</td>
+                        <td>{studentAccs.studentNo}</td>
+                        <td>{studentAccs.studentSection}</td>
+                        <td>{studentAccs.Type}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+              {(filterOption === "Relative")  && (
+                <table className="account-list-table">
+                  <thead>
+                    <tr>
+                      <th>Relative ID</th>
+                      <th>Full Name</th>
+                      <th>Email</th>
+                      <th>Referred By</th>
+                      <th>Type</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {relativeAccounts.map((relativeAccs, index) => (
+                      <tr key={index}>
+                        <td>{relativeAccs.relativeID}</td>
+                        <td>{relativeAccs.relativefullName}</td>
+                        <td>{relativeAccs.relativeEmail}</td>
+                        <td>{relativeAccs.referredBy}</td>
+                        <td>{relativeAccs.Type}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+              {filterOption === "Guest" && (
+                <table className="account-list-table">
+                  <thead>
+                    <tr>
+                      <th>Guest ID</th>
+                      <th>Full Name</th>
+                      <th>Email</th>
+                      <th>Type</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {guestAccounts.map((guestAccs, index) => (
+                      <tr key={index}>
+                        <td>{guestAccs.guestID}</td>
+                        <td>{guestAccs.guest_fullName}</td>
+                        <td>{guestAccs.guestEmail}</td>
+                        <td>{guestAccs.Type}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
             </div>
           </div>
-        {/* MAIN */}
+        </main>
+        {/* MAIN */} 
       </section>
       {/* CONTENT */}
     </>
   );
 };
 
-export default AttendanceList;
+export default AccountList;

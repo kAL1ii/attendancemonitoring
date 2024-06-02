@@ -14,7 +14,7 @@ module.exports = {
   
   rules: {
     indent: ["error", 2],
-    quotes: ["error", "single"],
+    quotes: ["error", "double"],
     semi: ["error", "always"],
     'react/jsx-no-target-blank': 'off',
     'react-refresh/only-export-components': [

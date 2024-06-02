@@ -1,11 +1,8 @@
-import express from 'express';
-import { getAllAccounts, saveAccounts, getAccountById } from '../controllers/accountController.js';
-
+import express from 'express'
+import { createFormResponse, getAccounts} from '../controllers/formresponseController.js'
 const router = express.Router();
 
-router.post('/', saveAccounts)
-router.get('/', getAllAccounts)
-router.get('/:accountID', getAccountById);
+router.get('/', getAccounts);
+router.post('/', createFormResponse);
 
-
-export default router;
+export default router

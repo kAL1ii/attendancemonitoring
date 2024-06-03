@@ -18,7 +18,6 @@ app.use(express.json());
 app.use("/", router);
 
 app.listen(PORT, () => {
-  syncDatabase();
   console.log("Server is running on port: " + PORT);
 });
 

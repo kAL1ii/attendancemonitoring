@@ -97,7 +97,7 @@ const Dashboard = () => {
           <div className="content-container">
             <div className="dashboard-title">
               <h1>Dashboard</h1>
-              <h2>Attendance:</h2>
+              <h2>Attendees:</h2>
             </div>
             <div className="dashboard-container">
               {dashboardData.map((box) => (

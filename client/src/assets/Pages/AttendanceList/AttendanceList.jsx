@@ -9,6 +9,7 @@ const AccountList = () => {
   const [studentAcc, setstudentAccounts] = useState([]);
   const [relativeAccounts, setrelativeAccounts] = useState([]);
   const [guestAccounts, setguestAccounts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleMenuItemClick = (index) => {
     setActiveMenuItem(index); // Set active menu item index
@@ -37,8 +38,26 @@ const AccountList = () => {
   useEffect(() => {
     fetchAccounts();
     const interval = setInterval(fetchAccounts, 1000);
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); 
   }, []);
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    setFilteredProducts(
+      fetchresponse.filter(fetchresponse =>
+        fetchresponse.name.toLowerCase().includes(searchQuery.toLowerCase()),
+      ),
+    );
+  };
+
+const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+    setFilteredProducts(
+      fetchresponse.filter((fetchresponse) =>
+        fetchresponse.name.toLowerCase().includes(event.target.value.toLowerCase())
+      )
+    );
+  };
 
   return (
     <>
@@ -76,9 +95,18 @@ const AccountList = () => {
       <section id="content">
         <nav>
           <i className="bx bx-menu" onClick={handleToggleSidebar}></i>
-          <form action="#">
+          <form
+            className="form-submit-query"
+            action="#"
+            onSubmit={handleSearchSubmit}
+          >
             <div className="form-input">
-              <input type="search" placeholder="Search..." />
+              <input
+                type="search"
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+              />
               <button type="submit" className="search-btn">
                 <i className="bx bx-search"></i>
               </button>

@@ -1,7 +1,8 @@
 import Sequelize from 'sequelize';
 
-const database = new Sequelize('dbaccmonitoring', 'root', 'password', { 
-  host: 'localhost',
+const database = new Sequelize('dbaccmonitoring', 'user_dbadmin', '1234', { 
+  host: '212.38.94.226',
+  port: 5434,
   dialect: 'mysql'
 });
 

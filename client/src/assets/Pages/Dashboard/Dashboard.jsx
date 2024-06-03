@@ -21,7 +21,7 @@ const Dashboard = () => {
 
   const fetchAccounts = async () => {
     try {
-      const fetchresponse = await axios.get("http://localhost:5000/accounts");
+      const fetchresponse = await axios.get("https://server.ams.versatily.website/accounts");
       const studentCount = fetchresponse.data.studentModel.length;
       const relativeCount = fetchresponse.data.relativeModel.length;
       const guestCount = fetchresponse.data.guestModel.length;

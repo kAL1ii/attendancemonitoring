@@ -26,7 +26,7 @@ const AccountList = () => {
 
   const fetchAccounts = async () => {
     try {
-      const fetchresponse = await axios.get("http://localhost:5000/accounts");
+      const fetchresponse = await axios.get("https://server.ams.versatily.website/accounts");
       setstudentAccounts(fetchresponse.data.studentModel);
       setrelativeAccounts(fetchresponse.data.relativeModel);
       setguestAccounts(fetchresponse.data.guestModel);
